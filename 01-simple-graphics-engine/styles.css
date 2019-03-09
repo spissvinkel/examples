@@ -78,6 +78,10 @@ canvas {
   flex: 1;
 }
 
+#canvas {
+  position: absolute;
+}
+
 #controls {
   display: flex;
   margin-bottom: 12px;

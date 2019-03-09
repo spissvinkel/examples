@@ -1,6 +1,5 @@
-import { initRenderer, render } from './renderer';
-import { initScene, resizeScene, updateScene } from './scene';
-import { gauss } from '@spissvinkel/maths/maths';
+import * as RenderMgr from './render-mgr';
+import * as SceneMgr from './scene-mgr';
 
 export interface Viewport {
   wrapper: HTMLElement;
@@ -8,7 +7,6 @@ export interface Viewport {
   context: CanvasRenderingContext2D;
   width: number;
   height: number;
-  aspect: number;
 }
 
 interface RunState {
@@ -23,20 +21,11 @@ let viewport: Viewport;
 let runState: RunState;
 let lastTimeMillis = 0;
 
-const updateTime: (timeMillis: number) => void = timeMillis => {
-  lastTimeMillis = timeMillis;
-}
-
-const calculateNextDeltaTime: (timeMillis: number) => number = timeMillis => {
-  const deltaTimeSeconds = (timeMillis - lastTimeMillis) * TIME_FACTOR;
-  updateTime(timeMillis);
-  return deltaTimeSeconds;
-}
-
 const doNextFrame: (timeMillis: number) => void = timeMillis => {
-  const deltaTimeSeconds = calculateNextDeltaTime(timeMillis);
-  const shapes = updateScene(deltaTimeSeconds);
-  render(viewport, shapes);
+  const deltaTimeSeconds = (timeMillis - lastTimeMillis) * TIME_FACTOR;
+  lastTimeMillis = timeMillis;
+  const shape = SceneMgr.update(deltaTimeSeconds);
+  RenderMgr.render(viewport, shape);
   if (!runState.paused) window.requestAnimationFrame(doNextFrame);
 };
 
@@ -46,10 +35,12 @@ const pause: () => void = () => {
 };
 
 const resume: () => void = () => {
-  window.requestAnimationFrame(updateTime);
-  runState.paused = false;
-  runState.statusElem.innerText = 'Running';
-  window.requestAnimationFrame(doNextFrame);
+  window.requestAnimationFrame(timeMillis => {
+    lastTimeMillis = timeMillis;
+    runState.paused = false;
+    runState.statusElem.innerText = 'Running';
+    window.requestAnimationFrame(doNextFrame);
+  });
 };
 
 const togglePauseed: () => void = () => {
@@ -59,12 +50,11 @@ const togglePauseed: () => void = () => {
 
 const resize: () => void = () => {
   const { wrapper, canvas } = viewport;
-  viewport.width = wrapper.offsetWidth;
-  viewport.height = wrapper.offsetHeight;
-  viewport.aspect = viewport.width / viewport.height;
+  viewport.width = wrapper.clientWidth;
+  viewport.height = wrapper.clientHeight;
   canvas.width = viewport.width;
   canvas.height = viewport.height;
-  resizeScene(viewport.width, viewport.height, viewport.aspect);
+  SceneMgr.resize(viewport.width, viewport.height);
 };
 
 const initViewport: () => void = () => {
@@ -72,7 +62,7 @@ const initViewport: () => void = () => {
   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
   const context = canvas.getContext('2d');
   if (!context) throw '2d context unavailable';
-  viewport = { wrapper, canvas, context, width: 0, height: 0, aspect: 1.0 };
+  viewport = { wrapper, canvas, context, width: 0, height: 0 };
 };
 
 const initRunState: () => void = () => {
@@ -82,13 +72,11 @@ const initRunState: () => void = () => {
   runState = { paused: true, button, statusElem };
 };
 
-export const initEngine: () => void = () => {
+const init: () => void = () => {
   initViewport();
   initRunState();
-  initScene();
-  initRenderer();
   resize();
   window.addEventListener('resize', resize);
-
-  console.log(`gauss(1.2, 0) = ${gauss(1.2, 0)}`);
 };
+
+window.addEventListener('load', init);

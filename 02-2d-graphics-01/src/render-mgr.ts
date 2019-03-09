@@ -1,16 +1,13 @@
-import { Vec4 } from '@spissvinkel/maths';
 import * as vec2 from '@spissvinkel/maths/vec2';
 import { Viewport } from './engine';
-import { Shape } from './scene';
-
-const rgbaStyle: (colour: Vec4) => string = ({ x, y, z, w }) => `rgba(${x}, ${y}, ${z}, ${w})`;
+import { Shape } from './scene-mgr';
 
 export const render: (viewport: Viewport, shapes: Shape[]) => void = (viewport, shapes) => {
   const { context, width, height } = viewport;
   context.clearRect(0, 0, width, height);
   const p = vec2.zero();
   for (let i = 0; i < shapes.length; i++) {
-    const { points, position, fillColour, lineColour } = shapes[i];
+    const { points, position } = shapes[i];
     context.beginPath();
     vec2.addVInto(position, points[0], p);
     context.moveTo(p.x, p.y);
@@ -19,12 +16,10 @@ export const render: (viewport: Viewport, shapes: Shape[]) => void = (viewport, 
       context.lineTo(p.x, p.y);
     }
     context.closePath();
-    context.fillStyle = rgbaStyle(fillColour);
+    const { fillStyle, lineStyle } = shapes[i];
+    context.fillStyle = fillStyle;
     context.fill();
-    context.strokeStyle = rgbaStyle(lineColour);
+    context.strokeStyle = lineStyle;
     context.stroke();
   }
-};
-
-export const initRenderer: () => void = () => {
 };
