@@ -1,6 +1,6 @@
 # examples
 
-A collection of example projects demonstrating various coding techniques
+A collection of various demo projects and code examples
 
 
 ## Contents

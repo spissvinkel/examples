@@ -19,7 +19,7 @@ google-closure-compiler                                             \
   --language_out ECMASCRIPT5_STRICT                                 \
   --env BROWSER                                                     \
   --rewrite_polyfills false                                         \
-  --js_output_file ./index.js                                       \
+  --js_output_file ./example-02.js                                  \
   --entry_point build/engine                                        \
   --js ./build/*.js                                                 \
   --js ./node_modules/@spissvinkel/maths/*.js

@@ -46,4 +46,9 @@ installed already as it comes bundled with [Git for Windows](https://git-scm.com
 
 ## Running
 
-Open [index.html](./index.html) in a browser to run the code
+Open `example-02.html` in a browser to run the code
+
+
+## Documentation
+
+See <https://spissvinkel.github.io/examples/02-2d-graphics-01/> for more information

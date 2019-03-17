@@ -1,9 +1,4 @@
-# 01-simple-graphics-engine
-
-A simple browser based engine for interactive graphics which will be the basis for other example projects.
-
-This project is coded in TypeScript, HTML and CSS
-
+# How to install dependencies and build the project
 
 ## Installation
 
@@ -35,13 +30,3 @@ $ ./build.sh
 
 (The `build.sh` is a bash script, so if you are on Windows it is probably easiest to use Git Bash which you may have
 installed already as it comes bundled with [Git for Windows](https://git-scm.com/downloads))
-
-
-## Running
-
-Open `example-01.html` in a browser to run the code
-
-
-## Documentation
-
-See <https://spissvinkel.github.io/examples/01-simple-graphics-engine/> for more information
