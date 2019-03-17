@@ -9,4 +9,4 @@ This project is coded in TypeScript, HTML and CSS
 
 [How to install dependencies and build the project](installation.html)
 
-[Run the example project](example-02.html)
+[Run the example](example-02.html)

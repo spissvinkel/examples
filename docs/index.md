@@ -1,8 +1,3 @@
-# examples
-
-A collection of various demo projects and code examples
-
-
 ## Contents
 
 ### [01-simple-graphics-engine](/examples/01-simple-graphics-engine/)
