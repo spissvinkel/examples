@@ -1,6 +1,7 @@
-# 01-simple-graphics-engine
+# 03-2d-graphics-02
 
-A simple browser based engine for interactive graphics which will be the basis for other example projects.
+More animated 2d graphics in the browser, using both vectors and matrices from the
+[@spissvinkel/maths](https://github.com/spissvinkel/maths-js) library.
 
 This project is coded in TypeScript, HTML and CSS
 
@@ -24,6 +25,12 @@ do this - assumed to also be installed globally like so:
 $ npm install -g google-closure-compiler
 ```
 
+The project's local dependencies can now be installed by running:
+
+```bash
+$ npm install
+```
+
 
 ## Building
 
@@ -33,15 +40,24 @@ After installing deependencies, the project can be built by running the followin
 $ ./build.sh
 ```
 
+This will use Google closure compiler's default `SIMPLE` compilation level which builds faster but produces less
+compact and less efficient code.\
+For a "production" build we would want the best possible optimisation, and this can be selected by giving `ADVANCED` as
+an argument to the build script:
+
+```bash
+$ ./build.sh ADVANCED
+```
+
 (`build.sh` is a bash script, so if you are on Windows it is probably easiest to use Git Bash which you may have
 installed already as it comes bundled with [Git for Windows](https://git-scm.com/downloads))
 
 
 ## Running
 
-Open `example-01.html` in a browser to run the code
+Open `example-03.html` in a browser to run the code
 
 
 ## Documentation
 
-See <https://spissvinkel.github.io/examples/01-simple-graphics-engine/> for more information
+See <https://spissvinkel.github.io/examples/03-2d-graphics-02/> for more information

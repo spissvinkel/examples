@@ -9,3 +9,9 @@ A simple browser based engine for interactive graphics which will be the basis f
 
 Animated 2d graphics in the browser using vectors from the
 [@spissvinkel/maths](https://github.com/spissvinkel/maths-js) library
+
+
+### [03-2d-graphics-02](/examples/03-2d-graphics-02/)
+
+More animated 2d graphics in the browser, using both vectors and matrices from the
+[@spissvinkel/maths](https://github.com/spissvinkel/maths-js) library

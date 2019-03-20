@@ -40,7 +40,7 @@ After installing deependencies, the project can be built by running the followin
 $ ./build.sh
 ```
 
-(The `build.sh` is a bash script, so if you are on Windows it is probably easiest to use Git Bash which you may have
+(`build.sh` is a bash script, so if you are on Windows it is probably easiest to use Git Bash which you may have
 installed already as it comes bundled with [Git for Windows](https://git-scm.com/downloads))
 
 

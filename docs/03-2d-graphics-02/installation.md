@@ -1,9 +1,4 @@
-# 01-simple-graphics-engine
-
-A simple browser based engine for interactive graphics which will be the basis for other example projects.
-
-This project is coded in TypeScript, HTML and CSS
-
+# How to install dependencies and build the project
 
 ## Installation
 
@@ -24,6 +19,12 @@ do this - assumed to also be installed globally like so:
 $ npm install -g google-closure-compiler
 ```
 
+The project's local dependencies can now be installed by running:
+
+```bash
+$ npm install
+```
+
 
 ## Building
 
@@ -33,15 +34,16 @@ After installing deependencies, the project can be built by running the followin
 $ ./build.sh
 ```
 
+This will use Google closure compiler's default `SIMPLE` compilation level which builds faster but produces less
+compact and less efficient code.\
+For a "production" build we would want the best possible optimisation, and this can be selected by giving `ADVANCED` as
+an argument to the build script:
+
+```bash
+$ ./build.sh ADVANCED
+```
+
+The script takes slightly longer to build using this option.
+
 (`build.sh` is a bash script, so if you are on Windows it is probably easiest to use Git Bash which you may have
 installed already as it comes bundled with [Git for Windows](https://git-scm.com/downloads))
-
-
-## Running
-
-Open `example-01.html` in a browser to run the code
-
-
-## Documentation
-
-See <https://spissvinkel.github.io/examples/01-simple-graphics-engine/> for more information

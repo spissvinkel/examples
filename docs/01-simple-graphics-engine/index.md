@@ -2,7 +2,7 @@
 
 # 01-simple-graphics-engine
 
-A simple browser based engine for interactive graphics which will be the basis for other example projects.
+The basis for a simple, browser based, interactive graphics engine which will be used in other example projects.
 
 This project is coded in TypeScript, HTML and CSS
 

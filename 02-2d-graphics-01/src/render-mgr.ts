@@ -1,4 +1,5 @@
 import * as vec2 from '@spissvinkel/maths/vec2';
+
 import { Viewport } from './engine';
 import { Shape } from './scene-mgr';
 

@@ -1,0 +1,11 @@
+{
+  "name": "example-03-2d-graphics-02",
+  "version": "0.1.0",
+  "private": true,
+  "description": "More animated 2d graphics in the browser, using vectors and matrices from the @spissvinkel/maths library",
+  "author": "Simen Storsveen <code@simenstorsveen.no>",
+  "license": "MIT",
+  "dependencies": {
+    "@spissvinkel/maths": "^0.11.2"
+  }
+}
